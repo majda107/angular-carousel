@@ -1,0 +1,7 @@
+<div class="carousel">
+    <div class="carousel-images" [@carouselState]="getRolling" (@carouselState.done)="carouselAnimationCallback($event)">
+        <div class="carousel-image" *ngFor="let image of images" [style.background-image]="'url('+ image +')'"></div>
+    </div>
+</div>
+
+<button (click)="moveNext()">Move next</button>
