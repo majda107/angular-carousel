@@ -1,3 +1,3 @@
 <router-outlet></router-outlet>
 
-<app-carousel></app-carousel>
+<app-carousel (imageChange)="imageChanged($event)" [images]="['https://i.chzbgr.com/original/8979973/hFA384455/18-scary-cursed-images-that-are-just-weird-and-awful', 'https://i.ytimg.com/vi/Lb_tQqWr7Rk/maxresdefault.jpg', 'https://i.redd.it/2y3p1u2nb5k11.png', 'https://static.wixstatic.com/media/4666fd_ed3537d716cb4d5d940283d63539df06~mv2.jpg/v1/fit/w_2500,h_1330,al_c/4666fd_ed3537d716cb4d5d940283d63539df06~mv2.jpg']"></app-carousel>

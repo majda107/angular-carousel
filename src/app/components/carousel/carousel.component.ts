@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 
 import {
   trigger,
@@ -7,6 +7,8 @@ import {
   animate,
   transition
 } from "@angular/animations"
+import { Observable, Subject } from 'rxjs';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-carousel',
@@ -27,9 +29,11 @@ import {
 })
 export class CarouselComponent implements OnInit {
 
-  public images: string[] = ['https://i.chzbgr.com/original/8979973/hFA384455/18-scary-cursed-images-that-are-just-weird-and-awful', 'https://i.ytimg.com/vi/Lb_tQqWr7Rk/maxresdefault.jpg', 'https://i.redd.it/2y3p1u2nb5k11.png'];
+  @Input() images: string[];
 
   public rolling: boolean = false;
+  
+  @Output() imageChange = new EventEmitter();
 
   constructor() { }
 
@@ -50,5 +54,7 @@ export class CarouselComponent implements OnInit {
 
     this.rolling = false;
     this.images.push(this.images.shift())
+
+    this.imageChange.emit(this.images[0]);
   }
 }
