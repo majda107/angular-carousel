@@ -18,8 +18,8 @@ import { inherits } from 'util';
   animations: [
     trigger('carouselState', [
       state('rolling', style({
-        transform: 'translateX(-100%)'
-      })),
+        transform: 'translateX({{move}})'
+      }), { params: { move: -100 + '%' }}),
       state('static', style({
         transform: 'translateX(0)'
       })),
@@ -40,6 +40,8 @@ export class CarouselComponent implements OnInit {
 
   @Input() time: number = -1;
   private interval: any = null;
+  
+  @Input() visible: number = 3;
 
   constructor() {
     // setInterval(() => {
@@ -49,6 +51,7 @@ export class CarouselComponent implements OnInit {
 
   ngOnInit(): void {
     this.dots = new Array(this.images.length);
+
 
     if(this.time <= 0) return;
     this.interval = setInterval(() => { this.moveNext() }, this.time)
