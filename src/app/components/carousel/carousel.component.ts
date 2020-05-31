@@ -39,6 +39,7 @@ export class CarouselComponent implements OnInit {
   @Output() imageChange = new EventEmitter();
 
   @Input() time: number = -1;
+  private interval: any = null;
 
   constructor() {
     // setInterval(() => {
@@ -50,20 +51,28 @@ export class CarouselComponent implements OnInit {
     this.dots = new Array(this.images.length);
 
     if(this.time <= 0) return;
-    setInterval(() => {
-      this.moveNext();
-    }, this.time)
+    this.interval = setInterval(() => { this.moveNext() }, this.time)
   }
 
   get getRolling() {
     return this.rolling ? 'rolling' : 'static'
   }
 
+  clickedNext() {
+    // reset interval on click
+    if(this.interval != null) {
+      clearInterval(this.interval);
+      this.interval = setInterval(() => { this.moveNext() }, this.time);
+    }
+
+    this.moveNext();
+  }
+
   moveNext() {
     if (this.rolling) return;
     this.rolling = true;
 
-    this.selected = this.selected >= this.images.length - 1 ? 0 : this.selected + 1;
+    this.selected = this.selected >= this.images.length -1 ? 0 : this.selected + 1;
   }
 
   carouselAnimationCallback(event: AnimationEvent) {
@@ -71,9 +80,6 @@ export class CarouselComponent implements OnInit {
 
     this.rolling = false;
     this.images.push(this.images.shift())
-    // let sources = this.images.slice(0);
-    // sources.push(sources.shift());
-    // this.images = sources;
 
     this.imageChange.emit(this.images[0]);
   }
