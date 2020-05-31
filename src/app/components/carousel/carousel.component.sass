@@ -2,6 +2,8 @@
     width: 1280px
     height: 600px
     overflow: hidden
+    display: grid
+    grid-template-rows: 1fr auto
 
     &-images
         width: 100%
@@ -14,3 +16,19 @@
         background-position: center center
         background-size: cover
         display: inline-block
+
+    &-dots
+        display: flex
+        flex-flow: row
+        justify-content: center
+
+    &-dot
+        width: 24px
+        height: 24px
+        margin: 8px
+        border-radius: 20px
+        background-color: #4d4646
+        transition: background 500ms ease-in-out
+
+        &-selected
+            background-color: #3f8d51

@@ -1,7 +1,10 @@
 <div class="carousel">
-    <div class="carousel-images" [@carouselState]="getRolling" (@carouselState.done)="carouselAnimationCallback($event)">
+    <div class="carousel-images" [@carouselState]="getRolling" 
+        (@carouselState.done)="carouselAnimationCallback($event)"
+        (click)="moveNext()">
         <div class="carousel-image" *ngFor="let image of images" [style.background-image]="'url('+ image +')'"></div>
     </div>
+    <div class="carousel-dots">
+        <div class="carousel-dot" *ngFor="let dot of dots; let i = index" [ngClass]="{ 'carousel-dot-selected': i === selected }"></div>
+    </div>
 </div>
-
-<button (click)="moveNext()">Move next</button>
