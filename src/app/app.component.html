@@ -1,3 +1,7 @@
 <router-outlet></router-outlet>
 
-<app-carousel [time]="5000" (imageChange)="imageChanged($event)" [images]="['https://www.howtogeek.com/wp-content/uploads/2018/01/img_5a6791a231406.jpg', 'https://a.fsdn.com/sd/firehose/014/345/726-1.png', 'https://gamingbolt.com/wp-content/uploads/2018/04/Far-Cry-4-bullshot.jpg', 'https://assets1.ignimgs.com/2020/04/30/491495eaa1d61af478023224602-acv-norwayiconic-male-1588259104701.jpg']"></app-carousel>
+<div class="container">
+    <app-carousel [time]="5000" (imageChange)="imageChanged($event)"
+        [images]="['https://www.howtogeek.com/wp-content/uploads/2018/01/img_5a6791a231406.jpg', 'https://a.fsdn.com/sd/firehose/014/345/726-1.png', 'https://gamingbolt.com/wp-content/uploads/2018/04/Far-Cry-4-bullshot.jpg', 'https://assets1.ignimgs.com/2020/04/30/491495eaa1d61af478023224602-acv-norwayiconic-male-1588259104701.jpg']">
+    </app-carousel>
+</div>
